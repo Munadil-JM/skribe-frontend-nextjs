@@ -1,7 +1,10 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import ApexCharts from "react-apexcharts";
+const ApexCharts = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
 const SentimentScore = ({ data = [], type, heading }) => {
   const [graphId, setGraphId] = useState([]);
@@ -18,6 +21,14 @@ const SentimentScore = ({ data = [], type, heading }) => {
     if (id?.length > 0) setGraphId(id);
     if (value?.length > 0) setGraphValue(value);
   }, [data]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setTimeout(() => {
+        window.dispatchEvent(new Event("resize"));
+      }, 100);
+    }
+  }, []);
 
   const options = {
     series: graphId,

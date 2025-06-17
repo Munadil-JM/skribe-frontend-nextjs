@@ -249,13 +249,13 @@ const Searchbar = () => {
                   <ul className="w-full">
                     {citySuggestion ? (
                       citySuggestion?.length > 0 ? (
-                        citySuggestion?.map((curItem) => {
+                        citySuggestion?.map((curItem, index) => {
                           if (
                             curItem.isRegional &&
                             roleType?.includes("Freebies")
                           ) {
                             return (
-                              <li>
+                              <li key={index}>
                                 <Link
                                   href="#"
                                   onClick={() => {
@@ -294,7 +294,7 @@ const Searchbar = () => {
                             );
                           } else if (curItem.isRegional) {
                             return (
-                              <li>
+                              <li key={index}>
                                 <Link
                                   href="/regional"
                                   onClick={() => {
@@ -327,7 +327,7 @@ const Searchbar = () => {
                             );
                           } else {
                             return (
-                              <li>
+                              <li key={index}>
                                 <span
                                   onClick={() =>
                                     changeUrl(

@@ -1,8 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import ReactApexChart from "react-apexcharts";
-// import ApexCharts from "react-apexcharts";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
+const ReactApexChart = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
 const LanguageChart = ({ data = [], type, heading }) => {
   const [mediaDensityChartData, setMediaDensityChartData] = useState({

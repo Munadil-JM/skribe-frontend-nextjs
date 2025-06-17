@@ -462,7 +462,7 @@ const SupplementJournalist = ({ suppId, id, name, supplementName }) => {
                 <Lf />
               </Filter>
             )} */}
-            <fieldset className="w-full self-start rounded-xl border border-gray-300 px-3 ">
+            {/* <fieldset className="w-full self-start rounded-xl border border-gray-300 px-3 ">
               <h3 className="px-3 py-3 font-medium uppercase text-gray-900">
                 Filters
               </h3>
@@ -503,7 +503,7 @@ const SupplementJournalist = ({ suppId, id, name, supplementName }) => {
                   url={`GetLanguageFilter?OutletFilter=${id}&Supplement=${suppId}`}
                 />
               </div>
-            </fieldset>
+            </fieldset> */}
           </aside>
           <article className="mt-3 flex w-full flex-col flex-wrap gap-6 self-start">
             <div className="flex items-center justify-between">

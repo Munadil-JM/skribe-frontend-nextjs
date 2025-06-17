@@ -1,7 +1,10 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
-import ApexCharts from "react-apexcharts";
+const ApexCharts = dynamic(() => import("react-apexcharts"), {
+  ssr: false,
+});
 
 const ShareOfVoice = ({ data = [], type = "donut", heading }) => {
   // Initial chart options
