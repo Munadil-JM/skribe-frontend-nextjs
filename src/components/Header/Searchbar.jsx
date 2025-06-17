@@ -381,16 +381,12 @@ const Searchbar = () => {
               type="button"
               value="Search"
               className={`${
-                (mediaDdValue === "Outlet" || mediaDdValue === "City") &&
-                journalistSearch?.length > 0
+                mediaDdValue === "Outlet" || mediaDdValue === "City"
                   ? "bg-gray-300"
                   : "bg-[#FAC540] cursor-pointer"
               } px-3 py-2 font-medium text-xs text-[#002B5B] rounded-[7px] rounded-l-[0px] focus:outline-none`}
               onClick={() => searchFun()}
-              disabled={
-                (mediaDdValue === "Outlet" || mediaDdValue === "City") &&
-                journalistSearch?.length > 0
-              }
+              disabled={mediaDdValue === "Outlet" || mediaDdValue === "City"}
             />
           </div>
         </div>

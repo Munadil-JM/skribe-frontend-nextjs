@@ -66,8 +66,8 @@ const Skribe365 = () => {
         setLoading(false);
       }
     };
-    !roleType?.includes(Freebies) && fetchData();
-  }, []);
+    roleType?.length > 0 && !roleType?.includes(Freebies) && fetchData();
+  }, [roleType]);
   const groupedArticles = articles.reduce((acc, article) => {
     acc[article.primaryBeat] = acc[article.primaryBeat] || [];
     acc[article.primaryBeat].push(article);
