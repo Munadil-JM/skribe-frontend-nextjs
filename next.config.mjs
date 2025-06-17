@@ -3,7 +3,7 @@
 const nextConfig = {
   // toggle the below one only for debugging
   // reactStrictMode: false,
-  distDir: "./dist",
+  // distDir: "./dist",
   images: {
     remotePatterns: [
       {
