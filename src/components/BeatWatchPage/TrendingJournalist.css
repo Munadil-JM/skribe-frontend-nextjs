@@ -1,0 +1,11 @@
+.scrollbar::-webkit-scrollbar {
+  scrollbar-width: thin;
+  margin-top: 40px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-top: 12px;
+  padding: 40px;
+}
