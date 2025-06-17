@@ -10,7 +10,7 @@ import { get_Articles_ByBeat } from "../../Redux/Action/Settings";
 const BeatNav = ({ active, currentTab }) => {
   const [selctedBeats, setSelectedBeats] = useState([]);
 
-  const token = useSelector((state) => state.auth.authToken);
+  const token = useSelector((state) => state?.auth?.authToken);
   // const dispatch = useDispatch();
 
   const getActiveBeats = async (ALLBEATS) => {
