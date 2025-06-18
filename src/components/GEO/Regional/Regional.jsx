@@ -80,6 +80,7 @@ const Regional = () => {
       }
     );
   }
+
   const handleShowMedia = () => {
     localStorage.setItem("cities", JSON.stringify(selectedCities));
     const cities =
@@ -211,7 +212,7 @@ const Regional = () => {
                 className="w-full relative inline-flex flex-col"
               >
                 <div
-                  className="relative flex items-center bg-[#FFFDF6] py-2 pl-5 w-full rounded-lg border border-[#00000033]"
+                  className="relative cursor-pointer flex items-center bg-[#FFFDF6] py-2 pl-5 w-full rounded-lg border border-[#00000033]"
                   aria-label="State"
                   role="button"
                   onClick={() => setIsStateDropDownOpen((p) => !p)}
@@ -257,7 +258,7 @@ const Regional = () => {
                         return (
                           <p
                             key={item.intStateid || i}
-                            className={`py-1 px-2 last:rounded-b-lg cursor-pointer hover:bg-[#EDEDED] hover:text-black ${state === item.name ? "text-black bg-[#EDEDED]" : "text-black/40 bg-white "}`}
+                            className={`py-1 px-2 last:rounded-b-lg cursor-pointer hover:bg-[#EDEDED] hover:text-black ${state.stateName === item?.vchState ? "text-black bg-[#EDEDED]" : "text-black/40 bg-white"}`}
                             role="button"
                             onClick={() => {
                               GetTrackingInfo(
@@ -298,11 +299,11 @@ const Regional = () => {
                 className="w-full relative inline-flex flex-col"
               >
                 <div
-                  className={`relative flex items-center py-2 pl-5 w-full rounded-lg border border-[#00000033] ${state === "" ? "bg-[#E2E2E2] cursor-not-allowed" : "bg-[#FFFDF6]"}`}
+                  className={`relative flex items-center py-2 pl-5 w-full rounded-lg border border-[#00000033] ${state.stateName === "State" ? "bg-[#E2E2E2] cursor-not-allowed" : "bg-[#FFFDF6] cursor-pointer"}`}
                   aria-label="Select Cities"
                   role="button"
                   onClick={() => {
-                    if (state !== "") {
+                    if (state.stateName !== "State") {
                       setIsCityDropDownOpen((p) => !p);
                     }
                   }}
@@ -314,12 +315,7 @@ const Regional = () => {
                     height={15}
                     className="absolute left-2"
                   />
-                  {/* state.stateName === "Select State" || state.stateName === "" ? "Select State" : */}
-                  <span className="ml-2">
-                    {state.stateName === "State" || state.stateName === ""
-                      ? "City"
-                      : "City"}
-                  </span>
+                  <span className="ml-2">City</span>
 
                   <RxTriangleDown className="ml-auto mr-3" />
                 </div>
@@ -379,6 +375,7 @@ const Regional = () => {
                       <RxCross2
                         className="rounded-full relative -top-[1px] border-2 p-[1px] box-content cursor-pointer"
                         size={10}
+                        type="RegionalCity"
                         onClick={() => toggleCity(item)}
                       />
                     </p>

@@ -56,6 +56,14 @@ const GraphStats = ({
   ];
 
   useEffect(() => {
+    const id = setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+    }, 1500);
+
+    return () => clearTimeout(id);
+  }, []);
+
+  useEffect(() => {
     if (langCount?.length > 0) {
       const langCountData = langCount?.map((item) => item.count);
       const langCountLabel = langCount?.map((item) => item.vchLanguageName);

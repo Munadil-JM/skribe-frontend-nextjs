@@ -603,9 +603,8 @@ const Header = React.memo(() => {
             </div>
 
             {/* //add after loagin username */}
-            <Link
-              href="#"
-              className="flex gap-x-2 items-center relative"
+            <div
+              className="flex cursor-pointer gap-x-2 items-center relative"
               ref={openDD}
               onClick={() => setSocialDropDown((prev) => !prev)}
             >
@@ -622,12 +621,12 @@ const Header = React.memo(() => {
               </div>
               {socialDropDown && (
                 <div
-                  className="absolute right-0 top-10 bg-white text-sm text-gray-700 bg-white shadow-lg rounded-md p-2 w-[160px]"
+                  className="absolute right-0 top-10 text-sm text-gray-700 bg-white shadow-lg rounded-md p-2 w-[160px]"
                   ref={openDD1}
                 >
                   <div className="leading-7 flex flex-col">
                     <Link
-                      href="change-password"
+                      href="/change-password"
                       className="hover:bg-gray-300 px-2 py-0"
                     >
                       Forgot Password
@@ -642,7 +641,7 @@ const Header = React.memo(() => {
                   </div>
                 </div>
               )}
-            </Link>
+            </div>
           </div>
           {/* <MorePower
           open={isOpen}

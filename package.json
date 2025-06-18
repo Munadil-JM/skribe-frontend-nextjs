@@ -1,6 +1,6 @@
 {
   "name": "enterpr",
-  "version": "2025-06-17T05:04:54.822Z",
+  "version": "2025-06-17T16:00:16.324Z",
   "private": true,
   "dependencies": {
     "@chakra-ui/react": "^3.20.0",

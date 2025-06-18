@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
-
 const LanguageChart = ({ data = [], type, heading }) => {
   const [mediaDensityChartData, setMediaDensityChartData] = useState({
     series: [],
@@ -124,6 +123,7 @@ const LanguageChart = ({ data = [], type, heading }) => {
     <div id="chart">
       <ReactApexChart
         type="bar"
+        height={225}
         series={mediaDensityChartData.series}
         options={mediaDensityChartData.options}
       />
