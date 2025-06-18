@@ -384,14 +384,14 @@ const International = ({ outletId, id, name }) => {
                   trackingId={trackingId}
                   selectedFilters={selectedFilters}
                   setSelectedFilters={setSelectedFilters}
-                  url={`GetBeatFilter`}
+                  url={`GetBeatFilter?OutletFilter=${id}`}
                 />
                 <GetFiltersData
                   type="Country"
                   trackingId={trackingId}
                   selectedFilters={selectedFilters}
                   setSelectedFilters={setSelectedFilters}
-                  url={`GetCountryFilter`}
+                  url={`GetCountryFilter?OutletFilter=${id}`}
                 />
               </div>
             </fieldset>

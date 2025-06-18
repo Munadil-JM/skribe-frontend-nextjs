@@ -165,7 +165,7 @@ const MediaTypeOutlet = ({ outletId, name }) => {
                   selectedFilters={selectedFilters}
                   setSelectedFilters={setSelectedFilters}
                   geoData={languageFilter}
-                  // url="LanguageMedia"
+                  url="staticData"
                 />
                 <GetFiltersData
                   type="City"
@@ -173,7 +173,7 @@ const MediaTypeOutlet = ({ outletId, name }) => {
                   selectedFilters={selectedFilters}
                   setSelectedFilters={setSelectedFilters}
                   geoData={cityFilter}
-                  // url="geoMedia"
+                   url="staticData"
                 />
 
                 {/* <GetFiltersData

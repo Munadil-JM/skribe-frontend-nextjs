@@ -20,6 +20,7 @@ const MediaRank = ({
   languageFilter,
   outletFilter,
 }) => {
+
   const [byJournalist, setbyJournalist] = useState([]);
   const [getToken, setGetToken] = useState("");
   const [totalResults, setTotalResults] = useState("");
@@ -104,7 +105,7 @@ const MediaRank = ({
                   selectedFilters={selectedFilters}
                   setSelectedFilters={setSelectedFilters}
                   geoData={mediaFilter}
-                  url="geoMedia"
+                  url="staticData"
                 />
                 <GetFiltersData
                   type="Language"
@@ -112,7 +113,7 @@ const MediaRank = ({
                   selectedFilters={selectedFilters}
                   setSelectedFilters={setSelectedFilters}
                   geoData={languageFilter}
-                  url="geoMedia"
+                  url="staticData"
                 />
                 <GetFiltersData
                   type="Outlet"
@@ -120,7 +121,7 @@ const MediaRank = ({
                   selectedFilters={selectedFilters}
                   setSelectedFilters={setSelectedFilters}
                   geoData={outletFilter}
-                  url="geoMedia"
+                  url="staticData"
                 />
               </>
             </div>

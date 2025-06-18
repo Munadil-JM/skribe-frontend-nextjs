@@ -384,14 +384,14 @@ const BureauChief = ({ outletId, id, name }) => {
                     trackingId={trackingId}
                     selectedFilters={selectedFilters}
                     setSelectedFilters={setSelectedFilters}
-                    url={`GetBeatFilter`}
+                    url={`GetBeatFilter?OutletFilter=${id}`}
                   />
                   <GetFiltersData
                     type="City"
                     trackingId={trackingId}
                     selectedFilters={selectedFilters}
                     setSelectedFilters={setSelectedFilters}
-                    url={`GetCityFilter`}
+                    url={`GetCityFilter?OutletFilter=${id}`}
                   />
                 </div>
               </fieldset>

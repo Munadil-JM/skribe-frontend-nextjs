@@ -203,8 +203,10 @@ const GetFiltersData = React.memo(function GetFiltersData({
   const callSelectedAPI = (e, url) => {
     const dataType = e.target.dataset.name;
     if (dataType.includes(type) && !active && !apiHitState) {
+    if (!["staticData"].includes(url)) {
       filterApi(url, method);
       setApiHitState(true);
+      }
     }
     // else {
     //   setFilters(followerCount);
@@ -471,11 +473,11 @@ const GetFiltersData = React.memo(function GetFiltersData({
                 {rangeFilters?.length > 0 &&
                   rangeFilters?.map((curItem) => {
                     return (
-                      <>
-                        <option value={curItem.id + " " + curItem.value}>
+                      
+                        <option key={curItem.id} value={curItem.id + " " + curItem.value}>
                           {curItem.value}
                         </option>
-                      </>
+                      
                     );
                   })}
               </select>
