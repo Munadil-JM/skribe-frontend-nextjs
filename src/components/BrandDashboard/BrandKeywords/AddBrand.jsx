@@ -112,21 +112,19 @@ const AddBrand = ({ data, fun, message, setMessage }) => {
         </li>
 
         {data[0]?.keyword?.length < 5 ? (
-          <>
-            <li className="text-md text-gray-800 px-1 pt-1  rounded-md flex flex-col">
-              <span
-                className="cursor-pointer underline text-md font-medium"
-                onClick={() => {
-                  setShowComp(true);
-                }}
-              >
-                Add Keyword
-              </span>
-              <span className="text-gray-600 text-sm">
-                Add at least one keyword to proceed
-              </span>
-            </li>
-          </>
+          <li className="text-md text-gray-800 px-1 pt-1  rounded-md flex flex-col">
+            <span
+              className="cursor-pointer underline text-md font-medium"
+              onClick={() => {
+                setShowComp(true);
+              }}
+            >
+              Add Keyword
+            </span>
+            <span className="text-gray-600 text-sm">
+              Add at least one keyword to proceed
+            </span>
+          </li>
         ) : (
           <li className="text-sm text-gray-800 px-1 pt-1 rounded-md">
             <span className="text-red-500">You can add 5 keyword max.</span>
@@ -173,23 +171,21 @@ const AddBrand = ({ data, fun, message, setMessage }) => {
         {data[0]?.keyword?.length > 0 &&
           data[0]?.keyword?.map((curItem, index) => {
             return (
-              <>
-                <li
-                  key={index}
-                  className="border text-sm font-medium bg-white border-gray-400 text-gray-600 px-2 py-1 rounded-md flex items-center"
-                >
-                  {curItem?.value?.slice(0, 1)?.toUpperCase()}
-                  {curItem?.value?.slice(1)?.toLowerCase()}
-                  {index >= 1 && (
-                    <span
-                      onClick={() => deActiveBrandKeyowrd(curItem.id)}
-                      className="cursor-pointer material-icons-outlined bg-gray-500 icon-10 p-1 text-white rounded-full ml-2"
-                    >
-                      close
-                    </span>
-                  )}
-                </li>
-              </>
+              <li
+                key={index}
+                className="border text-sm font-medium bg-white border-gray-400 text-gray-600 px-2 py-1 rounded-md flex items-center"
+              >
+                {curItem?.value?.slice(0, 1)?.toUpperCase()}
+                {curItem?.value?.slice(1)?.toLowerCase()}
+                {index >= 1 && (
+                  <span
+                    onClick={() => deActiveBrandKeyowrd(curItem.id)}
+                    className="cursor-pointer material-icons-outlined bg-gray-500 icon-10 p-1 text-white rounded-full ml-2"
+                  >
+                    close
+                  </span>
+                )}
+              </li>
             );
           })}
       </ul>

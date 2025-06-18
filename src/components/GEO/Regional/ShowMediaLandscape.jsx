@@ -76,10 +76,10 @@ const ShowMediaLandscape = ({ cityId }) => {
   const error = (msg, type) => showNotification(msg, type);
 
   //CODE FOR ALL TOP 4 GRAPHS START
-  let data1 = `${GEOSTATS}?CityFilter=${cityId}`;
-  let data2 = `${GEOMEDIADENSITY}?CityFilter=${cityId}`;
-  let data3 = `${regionMetrix}?CityFilter=${cityId}`;
-  let data4 = `${regionMediaGraph}?CityFilter=${cityId}`;
+  let data1 = `${GEOSTATS}?CityFilter=${decodeURIComponent(cityId)}`;
+  let data2 = `${GEOMEDIADENSITY}?CityFilter=${decodeURIComponent(cityId)}`;
+  let data3 = `${regionMetrix}?CityFilter=${decodeURIComponent(cityId)}`;
+  let data4 = `${regionMediaGraph}?CityFilter=${decodeURIComponent(cityId)}`;
 
   const geoStatsCount = async () => {
     // setLoading(true);
@@ -88,7 +88,7 @@ const ShowMediaLandscape = ({ cityId }) => {
       const url2 = data2;
       const url3 = data3;
       const url4 = data4;
-      const selectedArray = cityId?.split(",").map(Number);
+      const selectedArray = decodeURIComponent(cityId)?.split(",").map(Number);
       const [response1, response2, response3, response4] = await Promise.all([
         userService.get(url1),
         userService.get(url2),

@@ -60,7 +60,7 @@ const Regional = () => {
   useEffect(() => {
     setTrackingId(generateUUID());
   }, []);
-let isFreebieAccount;
+  let isFreebieAccount;
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user"));
     isFreebieAccount = userInfo?.role?.includes("Freebies");
@@ -87,7 +87,7 @@ let isFreebieAccount;
       selectedCities?.length > 0 &&
       selectedCities?.map((item) => item.intCityid);
 
-    router.push(`/regional/show-media/${cities}`);
+    router.push(`/regional/show-media/${decodeURIComponent(cities)}`);
   };
 
   useEffect(() => {
@@ -188,7 +188,7 @@ let isFreebieAccount;
   };
 
   useEffect(() => {
-   !isFreebieAccount && regionalState();
+    !isFreebieAccount && regionalState();
   }, []);
 
   useEffect(() => {
