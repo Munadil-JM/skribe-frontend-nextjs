@@ -24,14 +24,6 @@ const Brands = ({ tab, render }) => {
     setTrackingId(generateUUID());
   }, []);
 
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("user"));
-    const isFreebieAccount = userInfo?.role?.includes("Freebies");
-
-    if (isFreebieAccount) {
-      router.push("/dashboard");
-    }
-  }, []);
 
   // Function to generate UUID
   function generateUUID() {

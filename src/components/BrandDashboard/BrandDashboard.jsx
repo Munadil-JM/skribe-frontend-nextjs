@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import ChartStats from "./ChartStats";
 import TopJournalist from "./TopJournalist";
 import { BRANDTRACKER } from "../../constants";
@@ -13,6 +14,7 @@ import dummy_brand from "../assets/dummy_brand.jpg";
 import { useNotification } from "../ErrorAlert/ErrorContextNotification";
 
 const BrandDashboard = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -47,9 +49,18 @@ const BrandDashboard = () => {
       setIsLoading(false);
     }
   };
+let isFreebieAccount;
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("user"));
+    isFreebieAccount = userInfo?.role?.includes("Freebies");
+
+    if (isFreebieAccount) {
+      router.push("/dashboard");
+    }
+  }, []);
 
   useEffect(() => {
-    GetBrandData();
+    !isFreebieAccount && GetBrandData();
 
     // Set default date range and calculate the dates
     const calculatedEndDate = new Date().toISOString().split("T")[0];

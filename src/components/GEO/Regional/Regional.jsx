@@ -60,10 +60,10 @@ const Regional = () => {
   useEffect(() => {
     setTrackingId(generateUUID());
   }, []);
-
+let isFreebieAccount;
   useEffect(() => {
     const userInfo = JSON.parse(localStorage.getItem("user"));
-    const isFreebieAccount = userInfo?.role?.includes("Freebies");
+    isFreebieAccount = userInfo?.role?.includes("Freebies");
 
     if (isFreebieAccount) {
       router.push("/dashboard");
@@ -188,7 +188,7 @@ const Regional = () => {
   };
 
   useEffect(() => {
-    regionalState();
+   !isFreebieAccount && regionalState();
   }, []);
 
   useEffect(() => {
