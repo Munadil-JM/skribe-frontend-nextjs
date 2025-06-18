@@ -2,7 +2,6 @@
 
 import dynamic from "next/dynamic";
 import { useState, useEffect } from "react";
-
 const ReactApexChart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
@@ -55,13 +54,13 @@ const GraphStats = ({
     },
   ];
 
-  useEffect(() => {
-    const id = setTimeout(() => {
-      window.dispatchEvent(new Event("resize"));
-    }, 1500);
+  // useEffect(() => {
+  //   const id = setTimeout(() => {
+  //     window.dispatchEvent(new Event("resize"));
+  //   }, 1500);
 
-    return () => clearTimeout(id);
-  }, []);
+  //   return () => clearTimeout(id);
+  // }, []);
 
   useEffect(() => {
     if (langCount?.length > 0) {
@@ -302,6 +301,7 @@ const GraphStats = ({
             <section className="bg-white border border-black/20 rounded-md p-2 col-span-1">
               <h3 className="font-semibold mb-2">Languages</h3>
               <ReactApexChart
+                key={JSON.stringify(languagesChartData.series)}
                 type="donut"
                 height={170}
                 series={languagesChartData.series}
@@ -324,6 +324,7 @@ const GraphStats = ({
             <section className="bg-white border border-black/20 rounded-md p-2 col-span-1">
               <h3 className="font-semibold mb-2">Media Type</h3>
               <ReactApexChart
+                key={JSON.stringify(mediaDensityChartData.series)}
                 type="donut"
                 height={170}
                 series={mediaTypeChartData.series}
