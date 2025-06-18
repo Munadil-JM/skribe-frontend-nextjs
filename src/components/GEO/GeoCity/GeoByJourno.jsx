@@ -20,7 +20,7 @@ const GeoByJourno = ({
   return (
     <>
       <section className="flex w-11/12 p-6 py-6 pt-0 pl-8 pr-0 mt-6 section gap-x-6">
-        <aside className="flex flex-col hidden w-3/12 gap-6 md:flex md:w-7/12 lg:w-1/3">
+        <aside className="flex-col hidden w-3/12 gap-6 md:flex md:w-7/12 lg:w-1/3">
           <fieldset className="self-start w-full px-3 border border-gray-300 rounded-xl ">
             <h3 className="p-3 text-gray-900 uppercase text-md">Filters</h3>
             <div className="w-full p-3">

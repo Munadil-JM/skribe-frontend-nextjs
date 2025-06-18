@@ -361,7 +361,7 @@ const JournalistByBeat = ({ selected }) => {
           </div>
 
           <section className="flex gap-x-8">
-            <aside className="mt-[12px] flex hidden w-4/12 flex-col gap-6 md:flex md:w-7/12 lg:w-1/3">
+            <aside className="mt-[12px] hidden w-4/12 flex-col gap-6 md:flex md:w-7/12 lg:w-1/3">
               <div className="relative flex items-center justify-between">
                 <span
                   onClick={() => goBack()}

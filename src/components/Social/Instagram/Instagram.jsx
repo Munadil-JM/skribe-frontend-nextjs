@@ -246,7 +246,7 @@ const Instagram = () => {
       )}
       <div className="section w-11/12 p-6 py-6 pl-8 pr-0 pt-0">
         <section className="flex gap-x-8">
-          <aside className="mt-3 flex hidden w-4/12 flex-col gap-6 md:flex md:w-7/12 lg:w-1/3">
+          <aside className="mt-3 hidden w-4/12 flex-col gap-6 md:flex md:w-7/12 lg:w-1/3">
             <div className="relative mt-[18px] flex items-center justify-between"></div>
 
             <fieldset className="w-full self-start rounded-xl border border-gray-300 px-3 ">

@@ -150,7 +150,7 @@ const AllTopics = () => {
             {/* SUGGESTION BOX START */}
             {suggestion && (
               <div
-                className="w-3/3 absolute top-9 max-h-44 w-full overflow-y-auto border  border-gray-300 bg-white text-sm lg:w-1/3"
+                className="absolute top-9 max-h-44 w-full overflow-y-auto border  border-gray-300 bg-white text-sm lg:w-1/3"
                 ref={topicRef}
               >
                 <ul>

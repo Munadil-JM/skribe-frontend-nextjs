@@ -374,7 +374,7 @@ const MediaTypeOutlet = ({ outletId, name }) => {
                 {searchInput?.length > 0 && (
                   <span
                     onClick={clearButton}
-                    className="material-icons-outlined icon-14 cursor-pointer pr-2 text-xs uppercase text-gray-700 hover:text-gray-900 hover:underline hover:no-underline"
+                    className="material-icons-outlined icon-14 cursor-pointer pr-2 text-xs uppercase text-gray-700 hover:text-gray-900 hover:no-underline"
                   >
                     close
                   </span>

@@ -316,7 +316,7 @@ const SpokesPerson = ({ render }) => {
       )}
       <div className="w-12/12  py-6 pt-0  pr-0 section">
         <section className="flex gap-x-6">
-          <aside className="flex flex-col hidden w-4/12 gap-6 md:flex md:w-7/12 lg:w-1/3">
+          <aside className="flex-col hidden w-4/12 gap-6 md:flex md:w-7/12 lg:w-1/3">
             <fieldset className="self-start w-full px-3 border border-gray-300 rounded-xl ">
               <h3 className="p-3 text-gray-900 uppercase text-md">Filters</h3>
               <div className="w-full p-3">

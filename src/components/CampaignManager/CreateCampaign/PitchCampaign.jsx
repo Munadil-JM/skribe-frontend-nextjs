@@ -92,9 +92,10 @@ const PitchCampaign = ({
         }
       );
 
+      const formattedContent = TemplateFormat[0].html + res.data.data.replace(/\n/g, "<br/>");
       setFormData({
         ...formData,
-        editorContent: TemplateFormat[0].html + res.data.data,
+        editorContent: formattedContent,
       });
       setSelectedPrompt(prompt);
       setPrompt("");
@@ -183,7 +184,7 @@ const PitchCampaign = ({
                           className="w-full rounded-lg focus:outline-none text-lg text-gray-500 resize-none h-[300px]"
                           style={{
                             fontFamily: "Poppins",
-                            whiteSpace: "pre-line",
+                            whiteSpace:"pre-wrap !important",wordWrap: "break-word"
                           }}
                         />
                         {isLoading && (
@@ -258,9 +259,9 @@ const PitchCampaign = ({
                             storeImages?.map((curItem, index) => {
                               if (curItem?.attachmentUrl?.includes("pdf")) {
                                 return (
-                                  <>
+                                 
                                     <li
-                                      key={`${curItem.url} + ${index}`}
+                                      key={`${index}`}
                                       className="bg-gray-200 p-2 relative rounded-lg"
                                     >
                                       {curItem?.size !== "" && (
@@ -281,14 +282,14 @@ const PitchCampaign = ({
                                         className="w-8 rounded-md object-cover"
                                       />
                                     </li>
-                                  </>
+                                  
                                 );
                               } else if (
                                 curItem?.attachmentUrl.includes("xlsx") ||
                                 curItem?.attachmentUrl.includes("xls")
                               ) {
                                 return (
-                                  <>
+                                
                                     <li
                                       key={curItem.url}
                                       className="bg-gray-200 p-2 relative rounded-lg"
@@ -311,13 +312,13 @@ const PitchCampaign = ({
                                         className="w-8 rounded-md object-cover"
                                       />
                                     </li>
-                                  </>
+                                
                                 );
                               } else if (
                                 curItem?.attachmentUrl.includes("csv")
                               ) {
                                 return (
-                                  <>
+                                 
                                     <li
                                       key={curItem.url}
                                       className="bg-gray-200 p-2 relative rounded-lg"
@@ -340,14 +341,14 @@ const PitchCampaign = ({
                                         className="w-8 rounded-md object-cover"
                                       />
                                     </li>
-                                  </>
+                                
                                 );
                               } else if (
                                 curItem?.attachmentUrl.includes("doc") ||
                                 curItem?.attachmentUrl.includes("docx")
                               ) {
                                 return (
-                                  <>
+                                 
                                     <li
                                       key={curItem.url}
                                       className="bg-gray-200 p-2 relative rounded-lg"
@@ -370,11 +371,11 @@ const PitchCampaign = ({
                                         className="w-8 rounded-md object-cover"
                                       />
                                     </li>
-                                  </>
+                                 
                                 );
                               } else {
                                 return (
-                                  <>
+                                 
                                     <li
                                       key={curItem.intCampAttacId}
                                       className="bg-gray-200 p-2 relative rounded-lg"
@@ -396,7 +397,7 @@ const PitchCampaign = ({
                                         className="w-8 rounded-md object-cover"
                                       />
                                     </li>
-                                  </>
+                                
                                 );
                               }
                             })}
@@ -407,9 +408,9 @@ const PitchCampaign = ({
                             displayImage?.map((curItem, index) => {
                               if (curItem?.file.name.includes("pdf")) {
                                 return (
-                                  <>
+                                 
                                     <li
-                                      key={curItem.index}
+                                      key={index}
                                       className="bg-gray-200 p-2 relative rounded-lg "
                                     >
                                       {curItem?.size !== "" && (
@@ -430,14 +431,14 @@ const PitchCampaign = ({
                                         className="w-8 rounded-md object-cover"
                                       />
                                     </li>
-                                  </>
+                                 
                                 );
                               } else if (
                                 curItem?.file.name.includes("xlsx") ||
                                 curItem?.file.name.includes("xls")
                               ) {
                                 return (
-                                  <>
+                                 
                                     <li
                                       key={curItem.url}
                                       className="bg-gray-200 p-2 relative rounded-lg"
@@ -460,11 +461,11 @@ const PitchCampaign = ({
                                         className="w-8 rounded-md object-cover"
                                       />
                                     </li>
-                                  </>
+                                 
                                 );
                               } else if (curItem?.file.name.includes("csv")) {
                                 return (
-                                  <>
+                                 
                                     <li
                                       key={curItem.url}
                                       className="bg-gray-200 p-2 relative rounded-lg "
@@ -487,14 +488,14 @@ const PitchCampaign = ({
                                         className="w-8 rounded-md object-cover"
                                       />
                                     </li>
-                                  </>
+                                
                                 );
                               } else if (
                                 curItem?.file.name.includes("doc") ||
                                 curItem?.file.name.includes("docx")
                               ) {
                                 return (
-                                  <>
+                                 
                                     <li
                                       key={curItem.url}
                                       className="bg-gray-200 p-2 relative rounded-lg"
@@ -517,11 +518,11 @@ const PitchCampaign = ({
                                         className="w-8 rounded-md object-cover"
                                       />
                                     </li>
-                                  </>
+                                  
                                 );
                               } else {
                                 return (
-                                  <>
+                                 
                                     <li
                                       key={curItem.url}
                                       className="bg-gray-200 p-2 relative rounded-lg "
@@ -548,7 +549,7 @@ const PitchCampaign = ({
                                         className="w-8 rounded-md object-cover"
                                       />
                                     </li>
-                                  </>
+                                  
                                 );
                               }
                             })}
@@ -759,7 +760,7 @@ const PitchCampaign = ({
                       {preBrandMention?.map((curItem, ind) => {
                         return (
                           <li
-                            key={`${curItem.intcampKeyId}-${ind}`} // Combining intcampKeyId and index
+                            key={`${ind}`} // Combining intcampKeyId and index
                             className="border mb-2 text-gray-500 border-gray-400 bg-gray-200 px-1 text-sm flex items-center mr-3 gap-x-2 rounded-md"
                           >
                             {curItem.vchCampaignKeyword
@@ -783,9 +784,9 @@ const PitchCampaign = ({
                     <ul className="flex flex-wrap ">
                       {brandMention?.map((curItem, ind) => {
                         return (
-                          <>
+                      
                             <li
-                              key={`${curItem}-${ind}`}
+                              key={`${ind}`}
                               className="border mb-2 text-gray-500 text-sm border-gray-400 px-2 flex items-center mr-3 gap-x-2 rounded-md bg-white"
                             >
                               {curItem.charAt(0).toUpperCase() +
@@ -797,7 +798,7 @@ const PitchCampaign = ({
                                 close
                               </span>
                             </li>
-                          </>
+                        
                         );
                       })}
                     </ul>

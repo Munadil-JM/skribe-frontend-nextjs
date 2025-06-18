@@ -22,6 +22,16 @@ const Skribe365Home = () => {
     setTrackingId(generateUUID());
   }, []);
 
+  let isFreebieAccount;
+  useEffect(() => {
+    const userInfo = JSON.parse(localStorage.getItem("user"));
+    isFreebieAccount = userInfo?.role?.includes("Freebies");
+
+    if (isFreebieAccount) {
+      router.push("/dashboard");
+    }
+  }, []);
+
   function generateUUID() {
     return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(
       /[xy]/g,
@@ -103,7 +113,7 @@ const Skribe365Home = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    !isFreebieAccount && fetchData();
   }, []);
 
   const handleLoadMore = () => {

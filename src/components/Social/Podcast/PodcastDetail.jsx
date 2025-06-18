@@ -263,7 +263,7 @@ const PodcastDetail = ({ id }) => {
                           className="rounded-md bg-[#3B5998]"
                           target="_blank"
                         >
-                          <img src={facebook} className="w-8" alt="img" />
+                          <img src={facebook.src} className="w-8" alt="img" />
                         </Link>
                       )}
                       {dataDetail?.instagram && (
@@ -272,7 +272,7 @@ const PodcastDetail = ({ id }) => {
                           className="rounded-md bg-[#C13684]"
                           target="_blank"
                         >
-                          <img src={instagram} className="w-8" alt="img" />
+                          <img src={instagram.src} className="w-8" alt="img" />
                         </Link>
                       )}
                       {dataDetail?.twitter && (
@@ -281,7 +281,7 @@ const PodcastDetail = ({ id }) => {
                           className="rounded-md bg-[#000000]"
                           target="_blank"
                         >
-                          <img src={twitter} className="w-8" alt="img" />
+                          <img src={twitter.src} className="w-8" alt="img" />
                         </Link>
                       )}
                     </div>

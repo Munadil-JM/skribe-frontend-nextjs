@@ -8,7 +8,7 @@ const MediaOutletSearchRecord = ({ data, outletId }) => {
   return (
     <div className="relative flex w-1/2 flex-shrink flex-grow flex-col overflow-hidden rounded-lg border border-gray-300 p-3  py-3 pb-5 pt-9 lg:w-1/3  xl:w-1/4">
       {data?.shutShop?.value === "Left journalism" && (
-        <div className="absolute -left-8 top-7 -rotate-45  bg-red-600 px-2 px-6 py-1 text-xs uppercase text-white">
+        <div className="absolute -left-8 top-7 -rotate-45  bg-red-600 px-6 py-1 text-xs uppercase text-white">
           Left Journalism
         </div>
       )}
@@ -20,13 +20,13 @@ const MediaOutletSearchRecord = ({ data, outletId }) => {
       )}
 
       {data?.shutShop?.value === "Moved abroad" && (
-        <div className="absolute -left-8 top-6 -rotate-45  bg-orange-500 px-2 px-6 py-1 text-xs uppercase text-white">
+        <div className="absolute -left-8 top-6 -rotate-45  bg-orange-500 px-6 py-1 text-xs uppercase text-white">
           Moved Abroad
         </div>
       )}
 
       {data?.shutShop?.value === "RIP" && (
-        <div className="absolute -left-8 top-6 -rotate-45  bg-red-600 p-2 px-6 py-1 text-xs text-xs uppercase text-white text-white">
+        <div className="absolute -left-8 top-6 -rotate-45  bg-red-600 p-2 px-6 py-1 text-xs uppercase text-white">
           RIP
         </div>
       )}

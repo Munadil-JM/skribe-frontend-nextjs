@@ -34,7 +34,7 @@ const MenuData = ({ description, id, linking, role, showPopup }) => {
           <Link
             href="#"
             onClick={() => showPopup()}
-            className="flex flex-1 items-center gap-x-2"
+            className="flex flex-1 items-center gap-x-2 relative"
           >
             <span className="text-white text-sm w-[95px]">
               {description}{" "}

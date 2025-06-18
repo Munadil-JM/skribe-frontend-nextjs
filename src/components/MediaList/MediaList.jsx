@@ -497,7 +497,7 @@ const MediaList = () => {
                     key={index}
                     className={`${selectedRadio === record?.intCampListId ? "bg-gray-200" : ""} cursor-pointer`}
                   >
-                    <td>
+                    <td className="p-3">
                       <input
                         type="radio"
                         id={`radio-${index}`}
@@ -536,7 +536,10 @@ const MediaList = () => {
                                   className="w-[30px] h-[30px] bg-gray-300 object-cover rounded-full border-2 border-white -mr-2"
                                 />
                               ) : (
-                                <div className="w-[30px] h-[30px] bg-gray-200 rounded-full border-2 border-white -mr-2 flex items-center justify-center text-[8px] leading-[10px] font-medium text-center">
+                                <div
+                                  key={index}
+                                  className="w-[30px] h-[30px] bg-gray-200 rounded-full border-2 border-white -mr-2 flex items-center justify-center text-[8px] leading-[10px] font-medium text-center"
+                                >
                                   No Img
                                 </div>
                               ))

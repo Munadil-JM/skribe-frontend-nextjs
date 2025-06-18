@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 import Link from "next/link";
 import { GETALLBEATS } from "../../constants";
 import userService from "../../Services/user.service";
+import { useNotification } from "../ErrorAlert/ErrorContextNotification";
 const BeatPopup = ({ open, onClose }) => {
   //const { mediaBeat, isLoadingBeat } = useAllBeat();
   const [mediaBeat, setMediaBeat] = useState([]);
@@ -17,6 +18,8 @@ const BeatPopup = ({ open, onClose }) => {
     setSearchInput("");
     setMediaBeat(mediaSearch);
   };
+  const { showNotification } = useNotification();
+  const warning = (msg, type) => showNotification(msg, type);
   useEffect(() => {
     if (searchInput.length > 0) handleSearch(searchInput);
   }, [searchInput]);
@@ -97,7 +100,7 @@ const BeatPopup = ({ open, onClose }) => {
             {searchInput?.length > 0 && (
               <span
                 onClick={clearButton}
-                className="absolute right-3 material-icons-outlined icon-14 cursor-pointer pr-2 text-xs uppercase text-gray-700 hover:text-gray-900 hover:underline hover:no-underline"
+                className="absolute right-3 material-icons-outlined icon-14 cursor-pointer pr-2 text-xs uppercase text-gray-700 hover:text-gray-900 hover:no-underline"
               >
                 close
               </span>
@@ -183,8 +186,9 @@ const BeatPopup = ({ open, onClose }) => {
                                     if (selectedBeats.length <= 2) {
                                       selectedBeat(e.target, curItem.beatid);
                                     } else {
-                                      alert(
-                                        "You can select a maximum of 3 beats"
+                                      warning(
+                                        "You can select a maximum of 3 beats",
+                                        "warning"
                                       );
                                     }
                                   }

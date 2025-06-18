@@ -376,7 +376,7 @@ const ListPopup = ({ open, onClose, listDetailId, mediaList }) => {
             {!!editMode && editMode ? (
               <div
                 onClick={updateContent}
-                className="absolute right-10 top-10 border border-white-400 px-2 py-1 hover:text-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-100 cursor-pointer"
+                className="absolute right-10 top-10 border border-gray-100 px-2 py-1 hover:text-gray-200 rounded-md hover:bg-gray-400 hover:border-gray-100 cursor-pointer"
               >
                 <span className="material-icons-outlined text-white icon-16">
                   check
@@ -385,7 +385,7 @@ const ListPopup = ({ open, onClose, listDetailId, mediaList }) => {
             ) : (
               <div
                 onClick={editSubject}
-                className="absolute right-10 top-10 border border-white-400 px-2 py-1 hover:text-gray-200 rounded-md hover:bg-gray-100 hover:border-gray-100 cursor-pointer"
+                className="absolute right-10 top-10 border  px-2 py-1 border-gray-100 hover:bg-gray-400 rounded-md hover:border-gray-100 cursor-pointer"
               >
                 <span className="material-icons-outlined text-white icon-16">
                   edit
@@ -394,7 +394,7 @@ const ListPopup = ({ open, onClose, listDetailId, mediaList }) => {
             )}
 
             <button onClick={onClose} className="absolute right-2 top-2">
-              <span className="material-icons-outlined rounded-full p-1 text-white hover:bg-gray-400 hover:text-gray-200 icon-20">
+              <span className="material-icons-outlined rounded-full p-1 text-white hover:bg-gray-200 hover:text-gray-200 icon-20">
                 close
               </span>
             </button>
@@ -598,7 +598,7 @@ const ListPopup = ({ open, onClose, listDetailId, mediaList }) => {
                 <div className="text-xs text-center">Loading...</div>
               ) : mediaJournos?.length > 0 ? (
                 mediaJournos?.map((result, index) => (
-                  <div className="bg-white shadow-lg basis-[calc(50%-8px)] flex gap-x-4 items-start p-5 border border-gray-200 rounded-md relative">
+                  <div key={index} className="bg-white shadow-lg basis-[calc(50%-8px)] flex gap-x-4 items-start p-5 border border-gray-200 rounded-md relative">
                     {!!editMode && editMode && (
                       <button
                         className="absolute right-0 top-0 bg-gray-500 flex rounded-sm"
@@ -657,11 +657,11 @@ const ListPopup = ({ open, onClose, listDetailId, mediaList }) => {
                             result?.city?.slice(1)?.toLowerCase()}
                         </span>
                       </div>
-                      <div className="flex gap-x-2 mt-2">
+                      <div className="flex mt-2">
                         {result?.socials?.map((social, index) => (
-                          <>
+                          <div key={index} className="flex gap-x-2 w-full">
                             <Link
-                              key={index}
+                              
                               href={social?.linkdIn}
                               target="_blank"
                             >
@@ -681,7 +681,7 @@ const ListPopup = ({ open, onClose, listDetailId, mediaList }) => {
                                 className="rounded-[5px] w-6 h-6 bg-[#000]"
                               />
                             </Link>
-                          </>
+                          </div>
                         ))}
                       </div>
                     </div>

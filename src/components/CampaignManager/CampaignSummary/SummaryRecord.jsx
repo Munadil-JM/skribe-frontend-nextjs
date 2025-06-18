@@ -48,7 +48,8 @@ const SummaryRecord = ({ allData, deleteCampaign }) => {
                   }
                 >
                   {" "}
-                  {allData?.vchCampaignName}
+                  {allData?.vchCampaignName.charAt(0).toUpperCase() +
+                    allData?.vchCampaignName.slice(1)}
                 </span>
               )}
 

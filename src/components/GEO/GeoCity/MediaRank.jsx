@@ -93,7 +93,7 @@ const MediaRank = ({
         />
       )}
       <section className="w-11/12 p-6 py-6 pt-0 pl-8 pr-0 section mt-6 flex gap-x-6">
-        <aside className=" flex hidden w-3/12 flex-col gap-6 md:flex md:w-7/12 lg:w-1/3">
+        <aside className="hidden w-3/12 flex-col gap-6 md:flex md:w-7/12 lg:w-1/3">
           <fieldset className="w-full self-start rounded-xl border border-gray-300 px-3 ">
             <h3 className="p-3 text-gray-900 uppercase text-md">Filters</h3>
             <div className="w-full p-3">
