@@ -208,7 +208,7 @@ const DistributionPackages = () => {
         console.error("Error updating pressRelease data:", error);
       }
 
-      router.push("/pressrelease/disclamer/requestquote");
+      router.push("/press-release/disclaimer/request-quote");
     }
   };
 

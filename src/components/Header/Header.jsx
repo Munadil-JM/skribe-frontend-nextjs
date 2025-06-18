@@ -308,7 +308,7 @@ const Header = React.memo(() => {
   useEffect(() => {
     const currentPath = pathname;
 
-    if (currentPath === "/pressRelease") {
+    if (currentPath === "/press-release") {
       // Always hide on this route
       setShowNotification(false);
     } else {
