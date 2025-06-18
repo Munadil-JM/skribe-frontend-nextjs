@@ -246,7 +246,7 @@ const Sidebar = () => {
                     ) : roleType?.includes("Freebies") &&
                       label === "Regional Media" ? (
                       <Link
-                        to="#"
+                        href="#"
                         onClick={() => showPopup()}
                         className="flex flex-1 items-center gap-x-2"
                       >
