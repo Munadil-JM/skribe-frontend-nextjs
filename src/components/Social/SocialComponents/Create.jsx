@@ -1,9 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import DatePicker from "react-datepicker";
 import { useRouter } from "next/navigation";
-import "react-datepicker/dist/react-datepicker.css";
 
 const brandGoals = ["Awareness", "Reach", "Conversions", "A/B Testing"];
 
@@ -18,9 +16,9 @@ export default function CampaignForm() {
     description: "",
   });
   const [brandGoalsDropDownOpen, setBrandGoalsDropDownOpen] = useState(false);
-
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const today = new Date().toISOString().split("T")[0];
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -91,56 +89,26 @@ export default function CampaignForm() {
                   </label>
                   <div className="grid grid-cols-2 gap-2 ">
                     {/* Start Date */}
-
                     <div className="relative w-full">
-                      {/* <DatePicker
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        placeholderText="Start Date"
-                        dateFormat="MMM dd, yyyy"
-                        className="!w-full block pr-10 px-3 py-2 border border-gray-300 rounded-lg outline-none text-sm placeholder-gray-400 bg-[#FAFAFA]"
-                        wrapperClassName="w-full"
-                      /> */}
-
                       <input
-                        // className="text-black/40 border border-black/20 p-1 flex-1 rounded-md bg-[#FAFAFA]"
-                        className="!w-full block  px-3 py-2 border border-gray-300 rounded-lg outline-none text-sm placeholder-gray-400 bg-[#FAFAFA]"
+                        className="!w-full block px-3 py-2 border border-gray-300 rounded-lg outline-none text-sm bg-[#FAFAFA]"
                         type="date"
-                        // max={lastDate}
+                        max={today}
                         value={startDate}
                         onChange={(e) => setStartDate(e.target.value)}
-                        // disabled={dateStatus}
                       />
-
-                      {/* Calendar icon positioned absolutely */}
-                      {/* <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                        <img
-                          src="/assets/Calendar.svg"
-                          alt="calendar"
-                          className="w-[20px] h-[20px]"
-                        />
-                      </div> */}
                     </div>
 
                     {/* End Date */}
                     <div className="relative w-full">
-                      <DatePicker
-                        selected={endDate}
-                        onChange={(date) => setEndDate(date)}
-                        placeholderText="End Date"
-                        dateFormat="MMM dd, yyyy"
-                        minDate={startDate}
-                        className="!w-full block px-3 py-2 border border-gray-300 rounded-lg outline-none text-sm placeholder-gray-400 bg-[#FAFAFA]"
-                        wrapperClassName="w-full"
+                      <input
+                        className="!w-full block px-3 py-2 border border-gray-300 rounded-lg outline-none text-sm bg-[#FAFAFA]"
+                        type="date"
+                        min={startDate}
+                        max={today}
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
                       />
-
-                      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
-                        <img
-                          src="/assets/Calendar.svg"
-                          alt="calendar"
-                          className="w-[20px] h-[20px]"
-                        />
-                      </div>
                     </div>
                   </div>
                 </div>

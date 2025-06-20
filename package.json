@@ -26,7 +26,6 @@
     "react": "^19.1.0",
     "react-apexcharts": "^1.7.0",
     "react-cache-buster": "^0.1.8",
-    "react-datepicker": "^8.4.0",
     "react-dom": "^19.1.0",
     "react-dropzone": "^14.3.5",
     "react-google-charts": "^5.2.1",
