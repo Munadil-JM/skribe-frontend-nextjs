@@ -265,13 +265,15 @@ export default function CampaignForm() {
         </div>
       </div>
 
-      <div className="fixed bottom-0 w-full flex justify-end bg-[#F0EDE6] p-3 border-t-2 border-black/30">
-        <button
-          onClick={handleShortlistClick}
-          className={`px-4 py-2 rounded-lg text-sm font-medium mr-20 outline-none ${isFormValid ? "bg-[#E96D70] text-white cursor-pointer hover:bg-[#ff4f4f]" : "bg-[#989898] cursor-not-allowed text-[#434343]"}`}
-        >
-          Discover Influencers
-        </button>
+      <div className="w-full flex justify-center items-center sticky bg-[#F0EDE6] bottom-0 py-3 border-t-2 border-black/30">
+        <div className="flex w-full max-w-[1170px] justify-end">
+          <button
+            onClick={handleShortlistClick}
+            className={`px-4 py-2 rounded-lg ml-auto text-sm font-medium outline-none ${isFormValid ? "bg-[#E96D70] text-white cursor-pointer hover:bg-[#ff4f4f]" : "bg-[#989898] cursor-not-allowed text-[#434343]"}`}
+          >
+            Discover Influencers
+          </button>
+        </div>
       </div>
     </main>
   );

@@ -9,7 +9,7 @@ import Jsearch from "../assets/Journalist Search.svg";
 import TimeSpent from "../assets/Time spent Icon.svg";
 
 const formatIndianNumber = (num) => {
-  const str = num.toString();
+  const str = num?.toString();
 
   const [integerPart, decimalPart] = str.split(".");
 
