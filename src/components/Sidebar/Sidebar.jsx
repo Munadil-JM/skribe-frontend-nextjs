@@ -79,6 +79,7 @@ const Sidebar = () => {
       icon: "/assets/Social.svg",
       link: "#",
       items: [
+        { name: "Create Social", link: "create" },
         { name: "X", link: "X" },
         { name: "Instagram", link: "instagram" },
         { name: "Podcast", link: "podcast" },

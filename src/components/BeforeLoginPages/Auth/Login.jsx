@@ -108,6 +108,21 @@ const Login = ({ listName, id, regional }) => {
       });
   };
 
+  async function addCookie() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const role = user?.role;
+
+    if (role) {
+      await fetch("/api/set-cookie", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ role }),
+      });
+    }
+  }
+
   function onChangeCred(e) {
     const { name, value } = e.target;
     setCred((prev) => {
@@ -175,6 +190,7 @@ const Login = ({ listName, id, regional }) => {
         } else if (response?.accessToken) {
           if (!userinfoStatus) {
             userInfo();
+            addCookie();
           }
           if (id) {
             router.push(`/view-journalists/${listName}/${id}`);

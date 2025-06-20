@@ -49,18 +49,9 @@ const BrandDashboard = () => {
       setIsLoading(false);
     }
   };
-let isFreebieAccount;
-  useEffect(() => {
-    const userInfo = JSON.parse(localStorage.getItem("user"));
-    isFreebieAccount = userInfo?.role?.includes("Freebies");
-
-    if (isFreebieAccount) {
-      router.push("/dashboard");
-    }
-  }, []);
 
   useEffect(() => {
-    !isFreebieAccount && GetBrandData();
+    GetBrandData();
 
     // Set default date range and calculate the dates
     const calculatedEndDate = new Date().toISOString().split("T")[0];

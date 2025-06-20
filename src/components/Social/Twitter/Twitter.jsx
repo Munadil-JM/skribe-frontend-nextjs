@@ -274,7 +274,7 @@ const Twitter = () => {
                   <>
                     <Link
                       href={""}
-                      className="flex relative items-center whitespace-nowrap rounded-[5px] border border-[#8260b6] px-3  py-0 text-xs text-[#8260b6]"
+                      className="flex relative items-center whitespace-nowrap rounded-[5px] border border-[#002b5b] px-3  py-0 text-xs text-[#002b5b]"
                       onClick={handleSelectAll}
                     >
                       {selectAllLabel}
@@ -294,7 +294,7 @@ const Twitter = () => {
                       <Link
                         href="#"
                         onClick={() => buildCampPopup()}
-                        className="relative flex items-center rounded-[5px] border border-[#8260b6]  px-3  py-1 text-xs  text-[#8260b6]"
+                        className="relative flex items-center rounded-[5px] border border-[#002b5b]  px-3  py-1 text-xs  text-[#002b5b]"
                       >
                         Create List
                       </Link>

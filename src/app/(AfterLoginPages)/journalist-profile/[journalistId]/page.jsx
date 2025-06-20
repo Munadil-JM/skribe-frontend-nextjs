@@ -1,6 +1,6 @@
-import SmartProfile from "@/components/SmartProfile/SmartProfile";
+import JP from "@/components/JP/JP";
 
-export default async function SmartProfilePage({ params }) {
+export default async function JPPage({ params }) {
   const { journalistId } = await params;
-  return <SmartProfile id={journalistId} />;
+  return <JP id={journalistId} />;
 }

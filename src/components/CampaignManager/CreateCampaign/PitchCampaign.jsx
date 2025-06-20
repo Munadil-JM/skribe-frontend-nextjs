@@ -22,22 +22,22 @@ const promptSuggestions = [
   {
     id: 2,
     content:
-      "Create a press release that feels more narrative-driven, opening with a real-world problem that Tesla’s latest energy storage innovation solves. Keep it newsworthy but engaging. Include key stats, a customer use case or testimonial if appropriate, and a quote from Tesla's CTO. End with a strong call to action.",
+      "Create a press release that feels more narrative-driven, opening with a real-world problem that Tesla's latest energy storage innovation solves. Keep it newsworthy but engaging. Include key stats, a customer use case or testimonial if appropriate, and a quote from Tesla's CTO. End with a strong call to action.",
   },
   {
     id: 3,
     content:
-      "Draft a concise media pitch email introducing Reliance’s new e-commerce platform launch to a top tech reporter. Hook the reporter in the first two sentences, explain why this is relevant to their audience, and suggest a few angles they might cover. Keep it under 200 words and include a clear next step.",
+      "Draft a concise media pitch email introducing Reliance's new e-commerce platform launch to a top tech reporter. Hook the reporter in the first two sentences, explain why this is relevant to their audience, and suggest a few angles they might cover. Keep it under 200 words and include a clear next step.",
   },
   {
     id: 4,
     content:
-      "Write a PR pitch offering an exclusive story or first interview about Amazon’s breakthrough in drone delivery technology to a top-tier outlet like Bloomberg. Focus on why this news matters now, what makes it unique, and what insider details the journalist would get by covering it. End with a call to schedule a conversation.",
+      "Write a PR pitch offering an exclusive story or first interview about Amazon's breakthrough in drone delivery technology to a top-tier outlet like Bloomberg. Focus on why this news matters now, what makes it unique, and what insider details the journalist would get by covering it. End with a call to schedule a conversation.",
   },
   {
     id: 5,
     content:
-      "Compose a bold, energetic press release that frames Netflix’s entry into live sports streaming as a major industry disruptor. Use confident language, compelling statistics, and vivid imagery. Open with a powerful headline and opening line. Include two quotes: one from Netflix leadership and one from a major sports partner or expert",
+      "Compose a bold, energetic press release that frames Netflix's entry into live sports streaming as a major industry disruptor. Use confident language, compelling statistics, and vivid imagery. Open with a powerful headline and opening line. Include two quotes: one from Netflix leadership and one from a major sports partner or expert",
   },
 ];
 
@@ -92,7 +92,8 @@ const PitchCampaign = ({
         }
       );
 
-      const formattedContent = TemplateFormat[0].html + res.data.data.replace(/\n/g, "<br/>");
+      const formattedContent =
+        TemplateFormat[0].html + res.data.data.replace(/\n/g, "<br/>");
       setFormData({
         ...formData,
         editorContent: formattedContent,
@@ -106,7 +107,7 @@ const PitchCampaign = ({
           textareaRef.current.style.height = "auto";
           textareaRef.current.style.height = `${textareaRef.current.scrollHeight}px`;
         }
-      }, 0);
+      }, 50);
     } catch (err) {
       console.error("Error while generating AI content: ", err);
     } finally {
@@ -184,7 +185,8 @@ const PitchCampaign = ({
                           className="w-full rounded-lg focus:outline-none text-lg text-gray-500 resize-none h-[300px]"
                           style={{
                             fontFamily: "Poppins",
-                            whiteSpace:"pre-wrap !important",wordWrap: "break-word"
+                            whiteSpace: "pre-wrap !important",
+                            wordWrap: "break-word",
                           }}
                         />
                         {isLoading && (
@@ -259,127 +261,11 @@ const PitchCampaign = ({
                             storeImages?.map((curItem, index) => {
                               if (curItem?.attachmentUrl?.includes("pdf")) {
                                 return (
-                                 
-                                    <li
-                                      key={`${index}`}
-                                      className="bg-gray-200 p-2 relative rounded-lg"
-                                    >
-                                      {curItem?.size !== "" && (
-                                        <span
-                                          onClick={() =>
-                                            deleteAPI(curItem.intCampAttacId)
-                                          }
-                                          className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
-                                        >
-                                          close
-                                        </span>
-                                      )}
-                                      <img
-                                        //src={`https://beta.goskribe.com/API/${curItem.url}`}
-                                        src={pdf.src}
-                                        alt={`preview-${index}`}
-                                        border="0"
-                                        className="w-8 rounded-md object-cover"
-                                      />
-                                    </li>
-                                  
-                                );
-                              } else if (
-                                curItem?.attachmentUrl.includes("xlsx") ||
-                                curItem?.attachmentUrl.includes("xls")
-                              ) {
-                                return (
-                                
-                                    <li
-                                      key={curItem.url}
-                                      className="bg-gray-200 p-2 relative rounded-lg"
-                                    >
-                                      {curItem?.size !== "" && (
-                                        <span
-                                          onClick={() =>
-                                            deleteAPI(curItem.intCampAttacId)
-                                          }
-                                          className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
-                                        >
-                                          close
-                                        </span>
-                                      )}
-                                      <img
-                                        //src={`https://beta.goskribe.com/API/${curItem.url}`}
-                                        src={excel.src}
-                                        alt={`preview-${index}`}
-                                        border="0"
-                                        className="w-8 rounded-md object-cover"
-                                      />
-                                    </li>
-                                
-                                );
-                              } else if (
-                                curItem?.attachmentUrl.includes("csv")
-                              ) {
-                                return (
-                                 
-                                    <li
-                                      key={curItem.url}
-                                      className="bg-gray-200 p-2 relative rounded-lg"
-                                    >
-                                      {curItem?.size !== "" && (
-                                        <span
-                                          onClick={() =>
-                                            deleteAPI(curItem.intCampAttacId)
-                                          }
-                                          className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
-                                        >
-                                          close
-                                        </span>
-                                      )}
-                                      <img
-                                        //src={`https://beta.goskribe.com/API/${curItem.url}`}
-                                        src={excel.src}
-                                        alt={`preview-${index}`}
-                                        border="0"
-                                        className="w-8 rounded-md object-cover"
-                                      />
-                                    </li>
-                                
-                                );
-                              } else if (
-                                curItem?.attachmentUrl.includes("doc") ||
-                                curItem?.attachmentUrl.includes("docx")
-                              ) {
-                                return (
-                                 
-                                    <li
-                                      key={curItem.url}
-                                      className="bg-gray-200 p-2 relative rounded-lg"
-                                    >
-                                      {curItem?.size !== "" && (
-                                        <span
-                                          onClick={() =>
-                                            deleteAPI(curItem.intCampAttacId)
-                                          }
-                                          className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
-                                        >
-                                          close
-                                        </span>
-                                      )}
-                                      <img
-                                        //src={`https://beta.goskribe.com/API/${curItem.url}`}
-                                        src={word.src}
-                                        alt={`preview-${index}`}
-                                        border="0"
-                                        className="w-8 rounded-md object-cover"
-                                      />
-                                    </li>
-                                 
-                                );
-                              } else {
-                                return (
-                                 
-                                    <li
-                                      key={curItem.intCampAttacId}
-                                      className="bg-gray-200 p-2 relative rounded-lg"
-                                    >
+                                  <li
+                                    key={`${index}`}
+                                    className="bg-gray-200 p-2 relative rounded-lg"
+                                  >
+                                    {curItem?.size !== "" && (
                                       <span
                                         onClick={() =>
                                           deleteAPI(curItem.intCampAttacId)
@@ -388,16 +274,122 @@ const PitchCampaign = ({
                                       >
                                         close
                                       </span>
+                                    )}
+                                    <img
+                                      //src={`https://beta.goskribe.com/API/${curItem.url}`}
+                                      src={pdf.src}
+                                      alt={`preview-${index}`}
+                                      border="0"
+                                      className="w-8 rounded-md object-cover"
+                                    />
+                                  </li>
+                                );
+                              } else if (
+                                curItem?.attachmentUrl.includes("xlsx") ||
+                                curItem?.attachmentUrl.includes("xls")
+                              ) {
+                                return (
+                                  <li
+                                    key={curItem.url}
+                                    className="bg-gray-200 p-2 relative rounded-lg"
+                                  >
+                                    {curItem?.size !== "" && (
+                                      <span
+                                        onClick={() =>
+                                          deleteAPI(curItem.intCampAttacId)
+                                        }
+                                        className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
+                                      >
+                                        close
+                                      </span>
+                                    )}
+                                    <img
+                                      //src={`https://beta.goskribe.com/API/${curItem.url}`}
+                                      src={excel.src}
+                                      alt={`preview-${index}`}
+                                      border="0"
+                                      className="w-8 rounded-md object-cover"
+                                    />
+                                  </li>
+                                );
+                              } else if (
+                                curItem?.attachmentUrl.includes("csv")
+                              ) {
+                                return (
+                                  <li
+                                    key={curItem.url}
+                                    className="bg-gray-200 p-2 relative rounded-lg"
+                                  >
+                                    {curItem?.size !== "" && (
+                                      <span
+                                        onClick={() =>
+                                          deleteAPI(curItem.intCampAttacId)
+                                        }
+                                        className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
+                                      >
+                                        close
+                                      </span>
+                                    )}
+                                    <img
+                                      //src={`https://beta.goskribe.com/API/${curItem.url}`}
+                                      src={excel.src}
+                                      alt={`preview-${index}`}
+                                      border="0"
+                                      className="w-8 rounded-md object-cover"
+                                    />
+                                  </li>
+                                );
+                              } else if (
+                                curItem?.attachmentUrl.includes("doc") ||
+                                curItem?.attachmentUrl.includes("docx")
+                              ) {
+                                return (
+                                  <li
+                                    key={curItem.url}
+                                    className="bg-gray-200 p-2 relative rounded-lg"
+                                  >
+                                    {curItem?.size !== "" && (
+                                      <span
+                                        onClick={() =>
+                                          deleteAPI(curItem.intCampAttacId)
+                                        }
+                                        className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
+                                      >
+                                        close
+                                      </span>
+                                    )}
+                                    <img
+                                      //src={`https://beta.goskribe.com/API/${curItem.url}`}
+                                      src={word.src}
+                                      alt={`preview-${index}`}
+                                      border="0"
+                                      className="w-8 rounded-md object-cover"
+                                    />
+                                  </li>
+                                );
+                              } else {
+                                return (
+                                  <li
+                                    key={curItem.intCampAttacId}
+                                    className="bg-gray-200 p-2 relative rounded-lg"
+                                  >
+                                    <span
+                                      onClick={() =>
+                                        deleteAPI(curItem.intCampAttacId)
+                                      }
+                                      className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
+                                    >
+                                      close
+                                    </span>
 
-                                      <img
-                                        //src={`https://beta.goskribe.com/API/${curItem.url}`}
-                                        src={`${ATTACH_URL}${curItem?.attachmentUrl}`}
-                                        alt={`preview-${index}`}
-                                        border="0"
-                                        className="w-8 rounded-md object-cover"
-                                      />
-                                    </li>
-                                
+                                    <img
+                                      //src={`https://beta.goskribe.com/API/${curItem.url}`}
+                                      src={`${ATTACH_URL}${curItem?.attachmentUrl}`}
+                                      alt={`preview-${index}`}
+                                      border="0"
+                                      className="w-8 rounded-md object-cover"
+                                    />
+                                  </li>
                                 );
                               }
                             })}
@@ -408,148 +400,138 @@ const PitchCampaign = ({
                             displayImage?.map((curItem, index) => {
                               if (curItem?.file.name.includes("pdf")) {
                                 return (
-                                 
-                                    <li
-                                      key={index}
-                                      className="bg-gray-200 p-2 relative rounded-lg "
-                                    >
-                                      {curItem?.size !== "" && (
-                                        <span
-                                          onClick={() =>
-                                            handleDelete(curItem.file)
-                                          }
-                                          className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
-                                        >
-                                          close
-                                        </span>
-                                      )}
-                                      <img
-                                        //src={`https://beta.goskribe.com/API/${curItem.url}`}
-                                        src={pdf.src}
-                                        alt={`preview-${index}`}
-                                        border="0"
-                                        className="w-8 rounded-md object-cover"
-                                      />
-                                    </li>
-                                 
+                                  <li
+                                    key={index}
+                                    className="bg-gray-200 p-2 relative rounded-lg "
+                                  >
+                                    {curItem?.size !== "" && (
+                                      <span
+                                        onClick={() =>
+                                          handleDelete(curItem.file)
+                                        }
+                                        className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
+                                      >
+                                        close
+                                      </span>
+                                    )}
+                                    <img
+                                      //src={`https://beta.goskribe.com/API/${curItem.url}`}
+                                      src={pdf.src}
+                                      alt={`preview-${index}`}
+                                      border="0"
+                                      className="w-8 rounded-md object-cover"
+                                    />
+                                  </li>
                                 );
                               } else if (
                                 curItem?.file.name.includes("xlsx") ||
                                 curItem?.file.name.includes("xls")
                               ) {
                                 return (
-                                 
-                                    <li
-                                      key={curItem.url}
-                                      className="bg-gray-200 p-2 relative rounded-lg"
-                                    >
-                                      {curItem?.size !== "" && (
-                                        <span
-                                          onClick={() =>
-                                            handleDelete(curItem.file)
-                                          }
-                                          className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
-                                        >
-                                          close
-                                        </span>
-                                      )}
-                                      <img
-                                        //src={`https://beta.goskribe.com/API/${curItem.url}`}
-                                        src={excel.src}
-                                        alt={`preview-${index}`}
-                                        border="0"
-                                        className="w-8 rounded-md object-cover"
-                                      />
-                                    </li>
-                                 
+                                  <li
+                                    key={curItem.url}
+                                    className="bg-gray-200 p-2 relative rounded-lg"
+                                  >
+                                    {curItem?.size !== "" && (
+                                      <span
+                                        onClick={() =>
+                                          handleDelete(curItem.file)
+                                        }
+                                        className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
+                                      >
+                                        close
+                                      </span>
+                                    )}
+                                    <img
+                                      //src={`https://beta.goskribe.com/API/${curItem.url}`}
+                                      src={excel.src}
+                                      alt={`preview-${index}`}
+                                      border="0"
+                                      className="w-8 rounded-md object-cover"
+                                    />
+                                  </li>
                                 );
                               } else if (curItem?.file.name.includes("csv")) {
                                 return (
-                                 
-                                    <li
-                                      key={curItem.url}
-                                      className="bg-gray-200 p-2 relative rounded-lg "
-                                    >
-                                      {curItem?.size !== "" && (
-                                        <span
-                                          onClick={() =>
-                                            handleDelete(curItem.file)
-                                          }
-                                          className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
-                                        >
-                                          close
-                                        </span>
-                                      )}
-                                      <img
-                                        //src={`https://beta.goskribe.com/API/${curItem.url}`}
-                                        src={excel.src}
-                                        alt={`preview-${index}`}
-                                        border="0"
-                                        className="w-8 rounded-md object-cover"
-                                      />
-                                    </li>
-                                
+                                  <li
+                                    key={curItem.url}
+                                    className="bg-gray-200 p-2 relative rounded-lg "
+                                  >
+                                    {curItem?.size !== "" && (
+                                      <span
+                                        onClick={() =>
+                                          handleDelete(curItem.file)
+                                        }
+                                        className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
+                                      >
+                                        close
+                                      </span>
+                                    )}
+                                    <img
+                                      //src={`https://beta.goskribe.com/API/${curItem.url}`}
+                                      src={excel.src}
+                                      alt={`preview-${index}`}
+                                      border="0"
+                                      className="w-8 rounded-md object-cover"
+                                    />
+                                  </li>
                                 );
                               } else if (
                                 curItem?.file.name.includes("doc") ||
                                 curItem?.file.name.includes("docx")
                               ) {
                                 return (
-                                 
-                                    <li
-                                      key={curItem.url}
-                                      className="bg-gray-200 p-2 relative rounded-lg"
-                                    >
-                                      {curItem?.size !== "" && (
-                                        <span
-                                          onClick={() =>
-                                            handleDelete(curItem.file)
-                                          }
-                                          className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
-                                        >
-                                          close
-                                        </span>
-                                      )}
-                                      <img
-                                        //src={`https://beta.goskribe.com/API/${curItem.url}`}
-                                        src={word.src}
-                                        alt={`preview-${index}`}
-                                        border="0"
-                                        className="w-8 rounded-md object-cover"
-                                      />
-                                    </li>
-                                  
+                                  <li
+                                    key={curItem.url}
+                                    className="bg-gray-200 p-2 relative rounded-lg"
+                                  >
+                                    {curItem?.size !== "" && (
+                                      <span
+                                        onClick={() =>
+                                          handleDelete(curItem.file)
+                                        }
+                                        className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
+                                      >
+                                        close
+                                      </span>
+                                    )}
+                                    <img
+                                      //src={`https://beta.goskribe.com/API/${curItem.url}`}
+                                      src={word.src}
+                                      alt={`preview-${index}`}
+                                      border="0"
+                                      className="w-8 rounded-md object-cover"
+                                    />
+                                  </li>
                                 );
                               } else {
                                 return (
-                                 
-                                    <li
-                                      key={curItem.url}
-                                      className="bg-gray-200 p-2 relative rounded-lg "
-                                    >
-                                      {curItem?.size !== "" && (
-                                        <span
-                                          onClick={() =>
-                                            handleDelete(curItem.file)
-                                          }
-                                          className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
-                                        >
-                                          close
-                                        </span>
-                                      )}
-                                      <img
-                                        //src={`https://beta.goskribe.com/API/${curItem.url}`}
-                                        src={
-                                          curItem?.url.includes("blob")
-                                            ? curItem.url
-                                            : `${ATTACH_URL}${curItem.url}`
+                                  <li
+                                    key={curItem.url}
+                                    className="bg-gray-200 p-2 relative rounded-lg "
+                                  >
+                                    {curItem?.size !== "" && (
+                                      <span
+                                        onClick={() =>
+                                          handleDelete(curItem.file)
                                         }
-                                        alt={`preview-${index}`}
-                                        border="0"
-                                        className="w-8 rounded-md object-cover"
-                                      />
-                                    </li>
-                                  
+                                        className="material-icons-outlined icon-16 cursor-pointer absolute -right-2 -top-2 p-1 bg-gray-500 text-white rounded-full"
+                                      >
+                                        close
+                                      </span>
+                                    )}
+                                    <img
+                                      //src={`https://beta.goskribe.com/API/${curItem.url}`}
+                                      src={
+                                        curItem?.url.includes("blob")
+                                          ? curItem.url
+                                          : `${ATTACH_URL}${curItem.url}`
+                                      }
+                                      alt={`preview-${index}`}
+                                      border="0"
+                                      className="w-8 rounded-md object-cover"
+                                    />
+                                  </li>
                                 );
                               }
                             })}
@@ -698,7 +680,7 @@ const PitchCampaign = ({
                   return (
                     <button
                       key={prompt.id}
-                      className="text-gray-500 text-xs rounded-lg bg-white border border-black/20 p-2 truncate"
+                      className="text-gray-500 cursor-pointer text-xs rounded-lg bg-white border border-black/20 p-2 truncate"
                       onClick={() => {
                         setPrompt(prompt.content);
                         setTimeout(() => {
@@ -784,21 +766,19 @@ const PitchCampaign = ({
                     <ul className="flex flex-wrap ">
                       {brandMention?.map((curItem, ind) => {
                         return (
-                      
-                            <li
-                              key={`${ind}`}
-                              className="border mb-2 text-gray-500 text-sm border-gray-400 px-2 flex items-center mr-3 gap-x-2 rounded-md bg-white"
+                          <li
+                            key={`${ind}`}
+                            className="border mb-2 text-gray-500 text-sm border-gray-400 px-2 flex items-center mr-3 gap-x-2 rounded-md bg-white"
+                          >
+                            {curItem.charAt(0).toUpperCase() +
+                              curItem.slice(1).toLowerCase()}
+                            <span
+                              className="material-icons-outlined text-gray-500 icon-14 cursor-pointer"
+                              onClick={() => deleteMention(curItem)}
                             >
-                              {curItem.charAt(0).toUpperCase() +
-                                curItem.slice(1).toLowerCase()}
-                              <span
-                                className="material-icons-outlined text-gray-500 icon-14 cursor-pointer"
-                                onClick={() => deleteMention(curItem)}
-                              >
-                                close
-                              </span>
-                            </li>
-                        
+                              close
+                            </span>
+                          </li>
                         );
                       })}
                     </ul>

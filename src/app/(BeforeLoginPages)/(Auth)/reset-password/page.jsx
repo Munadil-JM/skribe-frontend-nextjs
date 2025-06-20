@@ -1,4 +1,4 @@
-import ResetPassword from "@/components/ForgotPassword/ResetPassword";
+import ResetPassword from "@/components/BeforeLoginPages/Auth/ResetPassword";
 import { Suspense } from "react";
 import Loader from "@/components/Loader/Loader";
 

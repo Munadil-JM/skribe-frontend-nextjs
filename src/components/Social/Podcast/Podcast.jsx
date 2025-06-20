@@ -89,7 +89,7 @@ const Podcast = () => {
                   <Link
                     key={curItem?.intGenreId}
                     href={`/podcast-listing/${curItem?.intGenreId}`}
-                    className="text-xs rounded-md border border-gray-400 px-4 py-1 text-gray-400 hover:border-[#6521AD] hover:text-[#6521AD]"
+                    className="text-xs rounded-md border border-gray-400 px-4 py-1 text-gray-400 hover:border-[#002b5b] hover:text-[#002b5b]"
                   >
                     {curItem?.vchGenre}
                   </Link>

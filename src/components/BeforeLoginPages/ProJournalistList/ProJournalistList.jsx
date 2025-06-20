@@ -24,8 +24,6 @@ const schema = [
 const ProJournalistList = () => {
   useMetadata(schema);
 
-  // const [roleType, setRoleType] = useState(tokenService.getLocalRole());
-
   const [roleType, setRoleType] = useState(null);
 
   useEffect(() => {

@@ -1,5 +1,4 @@
 import { createContext, useContext, useState } from "react";
-// import Filterbox from "./Filterbox";
 
 const FilterContext = createContext();
 

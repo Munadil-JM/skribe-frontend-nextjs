@@ -181,6 +181,11 @@ const Header = React.memo(() => {
       .then((res) => {})
       .catch(() => {});
     localStorage.clear();
+
+    await fetch("/api/remove-cookie", {
+      method: "POST",
+    });
+
     service.logout();
     window.location.href = "/";
   };

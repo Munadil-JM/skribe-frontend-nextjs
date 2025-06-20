@@ -9,10 +9,6 @@ html,
 body {
   font-family: "Poppins", sans-serif;
   height: 100%;
-  -webkit-user-select: none;
-  -moz-user-select: -moz-none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .custom-swiper-pagination .swiper-pagination-bullet {
