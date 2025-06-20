@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import DOMPurify from "dompurify";
 import userService from "../../Services/user.service";
 import { SKRIBE365 } from "../../constants";
@@ -15,8 +15,10 @@ const Skribe365Home = () => {
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [nextPageToken, setNextPageToken] = useState(null);
-  const [hasMore, setHasMore] = useState(false);
+  const [hasMore, setHasMore] = useState(true);
   const router = useRouter();
+  const contentContainerRef = useRef(null);
+  const isFetchingRef = useRef(false);
 
   useEffect(() => {
     setTrackingId(generateUUID());
@@ -48,11 +50,19 @@ const Skribe365Home = () => {
   };
 
   const fetchData = async (token = null, isLoadMore = false) => {
+    if (!hasMore && isLoadMore) {
+      return;
+    }
+    if (isFetchingRef.current) {
+      return;
+    }
+
     if (isLoadMore) {
       setLoadingMore(true);
     } else {
       setLoading(true);
     }
+    isFetchingRef.current = true;
 
     try {
       let url = SKRIBE365;
@@ -90,15 +100,18 @@ const Skribe365Home = () => {
         }
       } else {
         console.error("Failed to fetch data:", response.message);
+        setHasMore(false);
       }
     } catch (error) {
       console.error("Error fetching data:", error);
+      setHasMore(false);
     } finally {
       if (isLoadMore) {
         setLoadingMore(false);
       } else {
         setLoading(false);
       }
+      isFetchingRef.current = false;
     }
   };
 
@@ -106,8 +119,33 @@ const Skribe365Home = () => {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const container = contentContainerRef.current;
+
+    if (!container) {
+      return;
+    }
+
+    const handleScroll = () => {
+      if (
+        container.scrollHeight - container.scrollTop <=
+          container.clientHeight + 50 &&
+        !loading &&
+        !loadingMore &&
+        !isFetchingRef.current &&
+        hasMore
+      ) {
+        handleLoadMore();
+      }
+    };
+
+    container.addEventListener("scroll", handleScroll);
+
+    return () => container.removeEventListener("scroll", handleScroll);
+  }, [loading, loadingMore, hasMore, nextPageToken, articles.length]);
+
   const handleLoadMore = () => {
-    if (nextPageToken && !loadingMore) {
+    if (nextPageToken && !loadingMore && !isFetchingRef.current) {
       fetchData(nextPageToken, true);
     }
   };
@@ -121,7 +159,7 @@ const Skribe365Home = () => {
 
   return (
     <>
-      <div className="px-8 pb-2 xl:w-11/12 w-12/12  xl:pl-8 section text-[14px] font-poppins">
+      <div className="px-8 pb-2 xl:w-11/12 w-12/12 xl:pl-8 section text-[14px] font-poppins">
         <div className="flex flex-col mt-4 ml-4">
           <ul className="flex items-center text-xs text-gray-400 gap-x-1">
             <li className="flex items-center">
@@ -135,7 +173,7 @@ const Skribe365Home = () => {
         </div>
       </div>
       <hr className="mt-2 mb-4 text-black/10" />
-      <div className="px-8 pb-6 xl:w-11/12 w-12/12  xl:pl-8 section text-[14px] font-poppins">
+      <div className="px-8 pb-6 xl:w-11/12 w-12/12 xl:pl-8 section text-[14px] font-poppins">
         <div className="ml-4">
           <span
             onClick={() => goBack()}
@@ -157,59 +195,57 @@ const Skribe365Home = () => {
         <div className="gap-4 mt-4 ml-4 md:flex">
           <div className="w-full">
             <div variant="outline" className="mr-2" boxshadow="base" p={4}>
-              <div className="mt-2 overflow-y-auto">
-                {loading ? (
+              <div
+                ref={contentContainerRef}
+                className="mt-2 overflow-y-auto max-h-[70vh]"
+              >
+                {loading && articles.length === 0 ? (
                   <div className="p-4">
                     <Skeleton count={5} height={100} className="w-full" />
                   </div>
                 ) : (
                   <>
-                    {Object.keys(groupedArticles).map((category, catIndex) => (
-                      <div key={catIndex}>
-                        <h3 className="ml-4 font-[500] text-[16px] tracking-wider text-[#2F4F69]">
-                          {category}
-                        </h3>
-                        {groupedArticles[category]?.map((article, artIndex) => (
-                          <div
-                            key={`${category}-${article.skribe365ContentId}-${artIndex}`}
-                            className="flex items-center justify-between mt-2 mb-2 ml-4 mr-4 text-sm "
-                          >
-                            <div className="w-full">
-                              <div className="flex justify-between ">
-                                <h2 className="font-[500] text-[14px] text-[#002b5b]">
-                                  {article.outletname}
-                                </h2>
-                                <h3 className="text-right text-[#666666] font-[500] text-[12px]">
-                                  {new Date(
-                                    article.createdDate
-                                  ).toLocaleDateString("en-GB", {
-                                    day: "2-digit",
-                                    month: "2-digit",
-                                    year: "numeric",
-                                  })}
-                                </h3>
+                    {Object.keys(groupedArticles).length > 0 &&
+                      Object.keys(groupedArticles).map((category, index) => (
+                        <div key={index}>
+                          <h3 className="ml-4 font-[500] text-[16px] tracking-wider text-[#2F4F69]">
+                            {category}
+                          </h3>
+                          {groupedArticles[category]?.map(
+                            (article, artIndex) => (
+                              <div
+                                key={`${category}-${article.skribe365ContentId}-${artIndex}`}
+                                className="flex items-center justify-between mt-2 mb-2 ml-4 mr-4 text-sm "
+                              >
+                                <div className="w-full">
+                                  <div className="flex justify-between ">
+                                    <h2 className="font-[500] text-[14px] text-[#002b5b]">
+                                      {article.outletname}
+                                    </h2>
+                                    <h3 className="text-right text-[#666666] font-[500] text-[12px]">
+                                      {new Date(
+                                        article.createdDate
+                                      ).toLocaleDateString("en-GB", {
+                                        day: "2-digit",
+                                        month: "2-digit",
+                                        year: "numeric",
+                                      })}
+                                    </h3>
+                                  </div>
+                                  <ReadMore content={article.description} />
+                                  <hr className="mt-2 ml-2 mr-2 text-[#D0D0D0]" />
+                                </div>
                               </div>
-                              <ReadMore content={article.description} />
-                              <hr className="mt-2 ml-2 mr-2 text-[#D0D0D0]" />
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    ))}
+                            )
+                          )}
+                        </div>
+                      ))}
                   </>
                 )}
 
-                {hasMore && !loading && (
-                  <div className="flex justify-center">
-                    <button
-                      onClick={handleLoadMore}
-                      disabled={loadingMore}
-                      className={`cursor-pointer my-5 rounded-md bg-[#002b5b] text-white px-3 py-2 text-sm font-normal  md:w-auto md:border-0 ${
-                        loadingMore ? "opacity-50 cursor-not-allowed" : ""
-                      }`}
-                    >
-                      {loadingMore ? "Loading..." : "Load more"}
-                    </button>
+                {loadingMore && (
+                  <div className="text-center my-4 text-sm text-gray-500">
+                    Loading more articles...
                   </div>
                 )}
               </div>

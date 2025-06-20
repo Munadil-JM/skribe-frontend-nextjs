@@ -2,6 +2,7 @@ import articleDefaultImg from "../assets/article-default.gif";
 import { CHAIIMG } from "../../constants";
 import parse from "html-react-parser";
 import Link from "next/link";
+import Image from "next/image";
 
 const TeaTimeRecord = ({
   bgBlogId,
@@ -39,7 +40,17 @@ const TeaTimeRecord = ({
           {vchHeading}
         </h3>
         <figure>
-          <img
+          <Image
+            width={200}
+            height={100}
+            quality={70}
+            priority={false}
+            placeholder="blur"
+            blurDataURL={
+              vchImagePath !== ""
+                ? `${CHAIIMG}${vchImagePath}`
+                : articleDefaultImg
+            }
             src={
               vchImagePath !== ""
                 ? `${CHAIIMG}${vchImagePath}`

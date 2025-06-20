@@ -11,6 +11,16 @@ const nextConfig = {
         hostname: "beta.goskribe.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "www.beta.goskribe.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.goskribe.com",
+        pathname: "/**",
+      },
     ],
   },
 };

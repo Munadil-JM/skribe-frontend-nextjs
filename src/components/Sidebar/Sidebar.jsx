@@ -131,10 +131,10 @@ const Sidebar = () => {
 
       <nav
         aria-labelledby="sidebar-navigation"
-        className={`fixed top-0 left-0 z-[3] h-full transition-all  ease-out animate-slide-right  ${
+        className={`fixed top-0 left-0 z-[3] h-full transition-all ease-out animate-slide-right  ${
           sideMenu
-            ? "w-48 px-2 pt-6 bg-[#002b5b]"
-            : "w-16 px-2 pt-6 bg-[#002b5b] hidden lg:block"
+            ? "w-48 pl-2 pt-6 bg-[#002b5b]"
+            : "w-16 pl-2 pt-6 bg-[#002b5b] hidden lg:block"
         } ${mobileLeftMenu ? "lg:block" : "hidden lg:block"}`}
       >
         {/* Header */}
@@ -201,7 +201,9 @@ const Sidebar = () => {
         )} */}
 
         {/* Menu Sections */}
-        <ul className="flex flex-col gap-y-7 mt-20">
+        <ul
+          className={`flex flex-col gap-y-7 my-10  ${sideMenu ? "side-bar-scroll overflow-y-auto max-h-[450px] overflow-x-hidden" : ""} `}
+        >
           {sections?.length > 0 &&
             sections?.map(({ key, label, icon, imageWidth, items, link }) => (
               <li key={key} className="flex flex-col relative items-start">

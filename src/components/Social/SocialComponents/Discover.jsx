@@ -2,9 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
-import { FiSearch, FiInfo } from "react-icons/fi";
-import { FaInstagram, FaYoutube } from "react-icons/fa";
+import { FiInfo } from "react-icons/fi";
+import { FaInstagram } from "react-icons/fa";
 import { RxCross2, RxTriangleDown } from "react-icons/rx";
+import { AiOutlineSearch, AiOutlineYoutube } from "react-icons/ai";
 
 const Discover = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -262,12 +263,7 @@ const Discover = () => {
     "Review",
     "Entertainment",
   ];
-  const availableLocations = [
-    "Mumbai, India",
-    "Delhi, India",
-    "Bangalore, India",
-    "Chennai, India",
-  ];
+  const availableLocations = ["Mumbai", "Delhi", "Bangalore", "Chennai"];
   const availableGenders = ["Male", "Female", "Other"];
   const availableLanguages = ["Hindi", "English", "Tamil", "Telugu", "Bengali"];
 
@@ -283,29 +279,25 @@ const Discover = () => {
     return (
       <div className="relative inline-flex flex-col" ref={dropdownRef}>
         <div
-          className="relative cursor-pointer flex items-center bg-white py-2 px-3 w-full rounded-[12px] border border-gray-300"
+          className="relative cursor-pointer flex items-center bg-gradient-to-b from-black/0 to-black/20 p-[10px] w-full rounded-[10px] border border-gray-300"
           role="button"
           onClick={() => setIsOpen((p) => !p)}
         >
-          <span className="ml-2">{placeholder}</span>
-          <RxTriangleDown className="ml-2" />
+          <span className="text-sm leading-0">{placeholder}</span>
+          <RxTriangleDown className="ml-3 leading-0" />
         </div>
+
         {isOpen && (
-          <div className="absolute top-full -mt-[5px] w-full flex flex-col gap-y-1 bg-white border border-black/20 z-50 max-h-48 overflow-scroll overflow-x-hidden rounded-b-lg">
+          <div className="absolute mt-1 top-full w-full bg-white border shadow-sm border-black/20 z-50 max-h-48 rounded-lg">
             {options.map((item, i) => {
               const isSelected = values.includes(item);
               return (
                 <p
                   key={i}
-                  className={`w-full py-1 px-2 flex items-center justify-between cursor-pointer hover:bg-[#EDEDED] hover:text-black ${isSelected ? "bg-[#E9F5F0] text-black" : "bg-white text-black/40"}`}
+                  className={`box-content m-1 py-1 px-2 last:rounded-b-lg first:rounded-t-lg flex items-center justify-between cursor-pointer text-black text-xs ${isSelected ? "bg-[#E9F5F0]" : "bg-white"}`}
                   onClick={() => onChange(item)}
                 >
                   {item.charAt(0).toUpperCase() + item.slice(1).toLowerCase()}
-                  {/* {isSelected ? (
-                                        <RxCheckbox size={17} />
-                                    ) : (
-                                        <RxBox size={15} className="mr-[1px]" />
-                                    )} */}
                 </p>
               );
             })}
@@ -367,62 +359,60 @@ const Discover = () => {
         </div>
 
         {/* Header */}
-        <div className="flex justify-between items-center mb-6">
+        <div className="flex justify-between items-center">
           <h1 className="text-xl font-semibold text-[#000000]">
             Sparkles Chocolate Launch for Delhi Audience
           </h1>
 
-          <div className="flex space-x-2 bg-[#318FFF66] p-1 rounded-md">
+          <div className="flex space-x-1 bg-[#318FFF66] p-1 rounded-lg">
             <button
               onClick={() => setActivePlatform("instagram")}
-              className={`flex items-center space-x-1 px-2 py-2 rounded-md text-xs font-[600] cursor-pointer ${activePlatform === "instagram" ? "bg-white text-black" : " text-black"}`}
+              className={`flex items-center space-x-1 px-2 py-2 rounded-lg text-xs font-[600] cursor-pointer ${activePlatform === "instagram" ? "bg-white text-black" : " text-black"}`}
             >
               <FaInstagram className="w-4 h-4" />
               <span>Instagram</span>
             </button>
             <button
               onClick={() => setActivePlatform("youtube")}
-              className={`flex items-center space-x-1 px-2 py-2 rounded-md text-xs font-[600] cursor-pointer ${activePlatform === "youtube" ? "bg-white text-black" : " text-black"}`}
+              className={`flex items-center space-x-1 px-2 py-2 rounded-lg text-xs font-[600] cursor-pointer ${activePlatform === "youtube" ? "bg-white text-black" : " text-black"}`}
             >
-              <FaYoutube className="w-4 h-4" />
+              <AiOutlineYoutube className="w-5 h-5" />
               <span>Youtube</span>
             </button>
           </div>
         </div>
 
-        <div className="bg-white rounded-lg p-5 mb-6">
+        <div className="bg-white rounded-lg py-3 mb-6">
           {/* Top Bar: Search + Toggle */}
           <div className="flex flex-wrap items-center gap-4 mb-5">
             {/* Search */}
-            <div className="relative flex-grow min-w-[250px] max-w-[412px]">
+            <div className="relative flex-grow min-w-[270px] max-w-[412px] border-2 border-black/15 rounded-lg">
               <input
-                type="text"
-                placeholder="Search by Creator/Handle"
+                type="search"
+                placeholder="Search by Creator Name/Handle"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-4 pr-4 py-[10px] border border-[#00000033] rounded-[8px] text-sm text-[#000000] placeholder:text-[#000000] focus:outline-none focus:ring-1 focus:ring-blue-500"
+                className="w-11/12 px-3 py-2 placeholder-black/50 text-sm text-[#000000] focus:outline-none focus:ring-0"
               />
-              <FiSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
+              <AiOutlineSearch className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5" />
             </div>
 
             {/* Verified Toggle */}
             <div className="flex items-center space-x-2">
               <div className="flex flex-row">
-                <span className="text-sm text-gray-700 font-medium">
-                  Verified
-                </span>
+                <span className="text-sm">Verified</span>
                 <img
                   src="/assets/greenverify.svg"
-                  alt="calendar"
+                  alt="Verift icon"
                   className="w-[18px] h-[18px] ml-1"
                 />
               </div>
               <div
                 onClick={() => setVerified(!verified)}
-                className={`relative inline-flex h-6 w-11 items-center rounded-full cursor-pointer transition-colors ${verified ? "bg-green-500" : "bg-gray-300"}`}
+                className={`relative inline-flex h-5 w-9 items-center rounded-full cursor-pointer transition-colors ${verified ? "bg-green-500" : "bg-gray-300"}`}
               >
                 <span
-                  className={`inline-block h-4 w-4 transform rounded-full bg-white shadow transition-transform ${verified ? "translate-x-6" : "translate-x-1"}`}
+                  className={`inline-block h-[14px] w-[14px] transform rounded-full bg-white shadow transition-transform ${verified ? "translate-x-5" : "translate-x-1"}`}
                 />
               </div>
             </div>
@@ -439,7 +429,7 @@ const Discover = () => {
               setIsOpen={setIsCategoryDropdownOpen}
               dropdownRef={categoryRef}
             />
-            <MultiSelectDropdown
+            {/* <MultiSelectDropdown
               values={subCategories}
               onChange={toggleSubCategory}
               options={availableSubCategories}
@@ -447,7 +437,7 @@ const Discover = () => {
               isOpen={isSubCategoryDropdownOpen}
               setIsOpen={setIsSubCategoryDropdownOpen}
               dropdownRef={subCategoryRef}
-            />
+            /> */}
             <MultiSelectDropdown
               values={locations}
               onChange={toggleLocation}
@@ -476,14 +466,14 @@ const Discover = () => {
               dropdownRef={languageRef}
             />
             <button
-              className="flex items-center gap-2  text-[#000000] px-4 py-2 rounded-[12px] text-sm  border border-gray-300 cursor-pointer"
+              className="flex items-center gap-2 text-[#000000] bg-gradient-to-b from-black/0 to-black/20 px-4 py-2 rounded-[12px] text-sm  border border-gray-300 cursor-pointer"
               onClick={() => setShowModal(true)}
             >
-              <span>Advance Filters</span>
+              <span className="text-sm">Advance Filters</span>
               <img
                 src="/assets/filter.svg"
                 alt="filter"
-                className="w-[20px] h-[20px]"
+                className="w-[18px] h-[18px]"
               />
             </button>
 
@@ -535,11 +525,11 @@ const Discover = () => {
           </div>
 
           {/* Footer */}
-          <div className="flex flex-row gap-2 items-center">
+          <div className="flex flex-row gap-2 items-center my-4">
             <div className="text-sm text-[#000000]">
               Showing results for {filteredCreators.length} Creators
             </div>
-            <div className="flex flex-wrap gap-2 items-center mb-3 mt-4">
+            <div className="flex flex-wrap gap-2 items-center">
               {selectedFilters.length > 0 &&
                 selectedFilters.map((item, i) => (
                   <p
