@@ -93,23 +93,33 @@ export default function CampaignForm() {
                     {/* Start Date */}
 
                     <div className="relative w-full">
-                      <DatePicker
+                      {/* <DatePicker
                         selected={startDate}
                         onChange={(date) => setStartDate(date)}
                         placeholderText="Start Date"
                         dateFormat="MMM dd, yyyy"
                         className="!w-full block pr-10 px-3 py-2 border border-gray-300 rounded-lg outline-none text-sm placeholder-gray-400 bg-[#FAFAFA]"
                         wrapperClassName="w-full"
+                      /> */}
+
+                      <input
+                        // className="text-black/40 border border-black/20 p-1 flex-1 rounded-md bg-[#FAFAFA]"
+                        className="!w-full block  px-3 py-2 border border-gray-300 rounded-lg outline-none text-sm placeholder-gray-400 bg-[#FAFAFA]"
+                        type="date"
+                        // max={lastDate}
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        // disabled={dateStatus}
                       />
 
                       {/* Calendar icon positioned absolutely */}
-                      <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                      {/* <div className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none">
                         <img
                           src="/assets/Calendar.svg"
                           alt="calendar"
                           className="w-[20px] h-[20px]"
                         />
-                      </div>
+                      </div> */}
                     </div>
 
                     {/* End Date */}

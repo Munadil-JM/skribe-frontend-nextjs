@@ -262,18 +262,20 @@ const BeatWatch = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-wrap gap-2 mx-2 mt-2 mb-2">
+        <div className="flex flex-wrap">
           {selectedBeats?.map((beat, index) => (
             <div
               key={index}
               sx={{ bg: "rgba(101, 33, 173, 0.04)" }}
-              className="flex items-center justify-center p-2 mt-1"
-              variant="unstyled"
+              className="flex items-center justify-center p-1"
             >
-              <div align="center">
-                <div className="text-customGray text-sm">{beat}</div>
-                <div as="button" ml={2} onClick={() => handleRemoveBeat(beat)}>
-                  <span className="icon-16 text-gray-500 material-icons-outlined">
+              <div
+                align="center"
+                className="flex border gap-x-2 border-black/15 items-center rounded-md px-2 leading-0"
+              >
+                <div className="text-black/50 text-sm ">{beat}</div>
+                <div as="button" onClick={() => handleRemoveBeat(beat)} className="leading-0">
+                  <span className="icon-14 text-gray-500 cursor-pointer material-icons-outlined">
                     close
                   </span>
                 </div>
